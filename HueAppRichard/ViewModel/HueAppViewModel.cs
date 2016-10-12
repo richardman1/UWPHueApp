@@ -14,16 +14,17 @@ namespace HueAppRichard.ViewModel
 
         private static HueHttpClient httpClient = new HueHttpClient();
 
-        public ObservableCollection<HueLight> HueLights
-        {
-            get { return huelights; }
-        }
-
         public static ObservableCollection<HueLight> getLights()
         {
             if (huelights.Count == 0)
             {
-                Task.Run(() => AddLights()).Wait();
+                try
+                {
+                    Task.Run(() => AddLights()).Wait();
+                }
+                catch(AggregateException e){
+                    System.Diagnostics.Debug.WriteLine(e.Message);
+                }
             }
             return huelights;
         }

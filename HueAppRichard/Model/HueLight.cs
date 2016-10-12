@@ -9,42 +9,25 @@ namespace HueAppRichard.Model
 {
     public class HueLight : INotifyPropertyChanged
     {
-        private int id;
-
-        public int Id
-        {
-            get { return this.id; }
-            set { id = value; NotifyPropertyChanged("Id"); }
-        }
-
+        public string name { get; set; }
+        public string id { get; set; }
+        public bool isOn { get; set; }
         public int saturation { get; set; }
-        private string name;
-
-        public string Name
-        {
-            get { return this.name; }
-            set { name = value;  NotifyPropertyChanged("Name"); }
-        }
-
-        public int hue { get; set; }
         public int brightness { get; set; }
-        private bool isOn;
+        public int hue { get; set; }
+        public string type { get; set; }
+        public bool effect { get; set; }
 
-        public bool IsOn
+        public HueLight(string id, string name, bool isOn, int saturation, int brightness, int hue, string type, bool effect)
         {
-            get { return this.isOn; }
-            set { isOn = value; NotifyPropertyChanged("IsOn"); }
-        }
-
-
-        public HueLight(int id, string name, bool isOn, int saturation, int brightness, int hue)
-        {
-            this.Id = id;
-            this.Name = name;
-            this.IsOn = isOn;
+            this.id = id;
+            this.name = name;
+            this.isOn = isOn;
             this.saturation = saturation;
             this.brightness = brightness;
             this.hue = hue;
+            this.type = type;
+            this.effect = effect;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -20,6 +20,7 @@ using Newtonsoft.Json;
 using System.Runtime.Serialization.Json;
 using Windows.Data.Json;
 using HueAppRichard.ViewModel;
+using System.Collections.ObjectModel;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -31,12 +32,12 @@ namespace HueAppRichard
     public sealed partial class MainPage : Page
     {
         private HueHttpClient httpClient;
+
+        private ObservableCollection<HueLight> _lightsViewModel = HueAppViewModel.getLights();
+
         public MainPage()
         {
-            Task.Run(async () => await HueAppViewModel.AddLights());
             this.InitializeComponent();
-            // httpClient = new HueHttpClient();
-            
         }
 
         private async void RetrieveButton_Click(object sender, RoutedEventArgs e)
@@ -52,6 +53,16 @@ namespace HueAppRichard
         private async void AllOffButtonButton_Click(object sender, RoutedEventArgs e)
         {
             await httpClient.AllLightsOff();
+        }
+
+        public ObservableCollection<HueLight> LightsViewModel
+        {
+            get { return this._lightsViewModel;}
+        }
+
+        private void hueListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Frame.Navigate(typeof(LightsDetailPage), e.ClickedItem);
         }
     }
 }

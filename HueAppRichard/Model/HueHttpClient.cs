@@ -41,12 +41,14 @@ namespace HueAppRichard.Model
                     if (lightState != null)
                     {
                         l = new HueLight(
-                            Convert.ToInt32(lightId),
+                            lightId,
                             lightToAdd.GetNamedString("name", string.Empty),
                             lightState.GetNamedBoolean("on", false),
                             Convert.ToInt32(lightState.GetNamedNumber("sat", 255)),
                             Convert.ToInt32(lightState.GetNamedNumber("bri", 255)),
-                            Convert.ToInt32(lightState.GetNamedNumber("hue", 4000))
+                            Convert.ToInt32(lightState.GetNamedNumber("hue", 4000)),
+                            lightToAdd.GetNamedString("type", "Light"),
+                            lightState.GetNamedString("effect") == "none" ? false : true
                             );
                     }
                     lights.Add(l);
@@ -192,9 +194,11 @@ namespace HueAppRichard.Model
                 string ip, username;
                 //int port;
 
-                ip = "192.168.1.179";
-                username = "1492b31c3af0d62f84eb4f438b041a7";
+                //ip = "192.168.1.179";
+                //username = "1492b31c3af0d62f84eb4f438b041a7";
                 //port = 8000;
+                ip = "localhost:8000";
+                username = "0af4bf5beeb28096a5ea7e7f95e2a63";
 
                 Uri uriAllLightInfo = new Uri($"http://{ip}/api/{username}/lights/");
 
