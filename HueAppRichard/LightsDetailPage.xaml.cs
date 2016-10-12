@@ -1,4 +1,5 @@
 ﻿using HueAppRichard.Model;
+using HueAppRichard.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -35,6 +36,39 @@ namespace HueAppRichard
             base.OnNavigatedTo(e);
             this.hueLight = e.Parameter as HueLight;
             this.DataContext = this.hueLight;
+        }
+
+        private async void isOn_Toggled(object sender, RoutedEventArgs e)
+        {
+            this.hueLight.isOn = isOn.IsOn;
+            await HueAppViewModel.updateLight(this.hueLight);
+        }
+
+        private async void colorloop_Toggled(object sender, RoutedEventArgs e)
+        {
+            this.hueLight.effect = colorloop.IsOn ? "colorloop" : "none";
+            await HueAppViewModel.updateLight(this.hueLight);
+        }
+
+        private async void hueSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        {
+            this.hueLight.hue = Convert.ToInt32(hueSlider.Value);
+            this.hueLight.effect = "none";
+            await HueAppViewModel.updateLight(hueLight);
+        }
+
+        private async void saturationSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        {
+            this.hueLight.saturation = Convert.ToInt32(saturationSlider.Value);
+            this.hueLight.effect = "none";
+            await HueAppViewModel.updateLight(hueLight);
+        }
+
+        private async void brightnessSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        {
+            this.hueLight.brightness = Convert.ToInt32(brightnessSlider.Value);
+            this.hueLight.effect = "none";
+            await HueAppViewModel.updateLight(hueLight);
         }
     }
 }

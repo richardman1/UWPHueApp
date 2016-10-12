@@ -17,28 +17,28 @@
                 <TextBlock Text="Brightness" HorizontalAlignment="Left"></TextBlock>
                 <TextBlock Name="brightnessValue" Text="{Binding brightness}" Margin="250, 0, 0, 0"></TextBlock>
             </StackPanel>
-            <Slider Maximum="254" Value="{Binding brightness}"></Slider>
+            <Slider Name="brightnessSlider" Maximum="254" Value="{Binding brightness}" ValueChanged="brightnessSlider_ValueChanged"></Slider>
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Saturation" HorizontalAlignment="Left"></TextBlock>
                 <TextBlock Name="saturationValue" Text="{Binding saturation}" Margin="250, 0, 0, 0"></TextBlock>
             </StackPanel>
-            <Slider Maximum="254" Value="{Binding saturation}"></Slider>
+            <Slider Name="saturationSlider" Maximum="254" Value="{Binding saturation}" ValueChanged="saturationSlider_ValueChanged"></Slider>
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Hue" HorizontalAlignment="Left"></TextBlock>
                 <TextBlock Name="hueValue" Text="{Binding hue}" Margin="250, 0, 0, 0"></TextBlock>
             </StackPanel>
-            <Slider Maximum="65280" Value="{Binding hue}"></Slider>
+            <Slider Name="hueSlider" Maximum="65280" Value="{Binding hue}" ValueChanged="hueSlider_ValueChanged"></Slider>
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Colorloop" VerticalAlignment="Center" HorizontalAlignment="Left"></TextBlock>
-                <ToggleSwitch Name="colorloop" Margin="50, 0, 0, 0" IsOn="{Binding effect}"/>
+                <ToggleSwitch Name="colorloop" Margin="50, 0, 0, 0" IsOn="{Binding effect}" Toggled="colorloop_Toggled"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="On/Off" VerticalAlignment="Center" HorizontalAlignment="Left"></TextBlock>
-                <ToggleSwitch Name="isOn" Margin="50, 0, 0, 0" IsOn="{Binding isOn}"/>
+                <ToggleSwitch Name="isOn" Margin="50, 0, 0, 0" IsOn="{Binding isOn}" Toggled="isOn_Toggled"/>
             </StackPanel>
         </StackPanel>
     </Grid>

@@ -37,5 +37,10 @@ namespace HueAppRichard.ViewModel
                 huelights.Add(l);
             }
         }
+
+        public static async Task updateLight(HueLight hueLight)
+        {
+            await httpClient.updateLight(hueLight);
+        }
     }
 }

@@ -48,7 +48,7 @@ namespace HueAppRichard.Model
                             Convert.ToInt32(lightState.GetNamedNumber("bri", 255)),
                             Convert.ToInt32(lightState.GetNamedNumber("hue", 4000)),
                             lightToAdd.GetNamedString("type", "Light"),
-                            lightState.GetNamedString("effect") == "none" ? false : true
+                            lightState.GetNamedString("effect")
                             );
                     }
                     lights.Add(l);
@@ -141,7 +141,7 @@ namespace HueAppRichard.Model
             }
         }
 
-        public async Task<string> AllLightsOff()
+        public async Task<string> updateLight(HueLight hueLight)
         {
             var cts = new CancellationTokenSource();
             cts.CancelAfter(5000);
@@ -151,23 +151,25 @@ namespace HueAppRichard.Model
                 HttpClient client = new HttpClient();
                 HttpStringContent content
                     = new HttpStringContent
-                          ($"{{ \"on\": false }}",
+                          ($"{{ \"on\": {hueLight.isOn}, \"hue\": {hueLight.hue}, \"sat\": {hueLight.saturation}, \"bri\": {hueLight.brightness}, \"effect\": \"{hueLight.effect}\" }}",
                             Windows.Storage.Streams.UnicodeEncoding.Utf8,
                             "application/json");
 
                 string ip, username;
-                // int port;
-                ip = "192.168.1.179";
-                username = "1492b31c3af0d62f84eb4f438b041a7";
+                //ip = "192.168.1.179";
+                //username = "1492b31c3af0d62f84eb4f438b041a7";
+                //port = 8000;
+                ip = "localhost:8000";
+                username = "cae8e350c00fa850fa8751362a42b1f";
 
-                Uri uriLampState = new Uri($"http://{ip}/api/{username}/groups/0/action");
+                Uri uriLampState = new Uri($"http://{ip}/api/{username}/lights/{hueLight.id}/state");
                 HttpResponseMessage response = await client.PutAsync(uriLampState, content).AsTask(cts.Token);
 
                 if (!response.IsSuccessStatusCode)
                 {
                     return string.Empty;
                 }
-
+                
                 string jsonResponse = await response.Content.ReadAsStringAsync();
 
                 System.Diagnostics.Debug.WriteLine(jsonResponse);
@@ -198,7 +200,7 @@ namespace HueAppRichard.Model
                 //username = "1492b31c3af0d62f84eb4f438b041a7";
                 //port = 8000;
                 ip = "localhost:8000";
-                username = "0af4bf5beeb28096a5ea7e7f95e2a63";
+                username = "cae8e350c00fa850fa8751362a42b1f";
 
                 Uri uriAllLightInfo = new Uri($"http://{ip}/api/{username}/lights/");
 

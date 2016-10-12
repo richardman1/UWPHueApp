@@ -50,11 +50,6 @@ namespace HueAppRichard
             await httpClient.AllLightsRed();
         }
 
-        private async void AllOffButtonButton_Click(object sender, RoutedEventArgs e)
-        {
-            await httpClient.AllLightsOff();
-        }
-
         public ObservableCollection<HueLight> LightsViewModel
         {
             get { return this._lightsViewModel;}
