@@ -46,5 +46,5 @@ namespace HueAppRichard.Model
         }
     }
 
-    
+
 }

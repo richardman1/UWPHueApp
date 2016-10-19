@@ -17,8 +17,6 @@ namespace HueAppRichard
     /// </summary>
     public sealed partial class MainPage : Page
     {
-
-
         public static ApplicationData APP_DATA = ApplicationData.Current;
         public static ApplicationDataContainer LOCAL_SETTINGS = APP_DATA.LocalSettings;
 
@@ -42,7 +40,7 @@ namespace HueAppRichard
 
         public ObservableCollection<HueLight> LightsViewModel
         {
-            get { return this._lightsViewModel;}
+            get { return this._lightsViewModel; }
         }
 
         private void hueListView_ItemClick(object sender, ItemClickEventArgs e)
@@ -51,19 +49,23 @@ namespace HueAppRichard
         }
 
 
-        public static void SetSettings(string ip, int port, string username) {
+        public static void SetSettings(string ip, int port, string username)
+        {
             MainPage.LOCAL_SETTINGS.Values["ip"] = ip;
             MainPage.LOCAL_SETTINGS.Values["username"] = username;
         }
 
-        public static void RetrieveSettings(out string ip, out string username) {
+        public static void RetrieveSettings(out string ip, out string username)
+        {
             string tmpIp = MainPage.LOCAL_SETTINGS.Values["ip"] as string;
             string tmpUsername = MainPage.LOCAL_SETTINGS.Values["username"] as string;
 
-            if (string.IsNullOrEmpty(tmpIp)) {
+            if (string.IsNullOrEmpty(tmpIp))
+            {
                 tmpIp = "192.168.1.179";
             }
-            if (string.IsNullOrEmpty(tmpUsername)) {
+            if (string.IsNullOrEmpty(tmpUsername))
+            {
                 tmpUsername = "1492b31c3af0d62f84eb4f438b041a7";
             }
 
@@ -71,30 +73,21 @@ namespace HueAppRichard
             username = tmpUsername;
         }
 
-        private void SettingsButton_Click(object sender, RoutedEventArgs e) {
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        {
             Frame.Navigate(typeof(Settings));
         }
 
         private void showAllOn_Click(object sender, RoutedEventArgs e)
         {
             this._filteredLightsViewModel = new ObservableCollection<HueLight>();
-            var filters = _lightsViewModel.Where(c => c.isOn == true);
-            foreach(HueLight light in filters)
-            {
-                this._filteredLightsViewModel.Add(light);
-            }
-            this.DataContext = this._filteredLightsViewModel;
+            this.DataContext = _lightsViewModel.Where(c => c.isOn == true);
         }
 
         private void showAllOff_Click(object sender, RoutedEventArgs e)
         {
             this._filteredLightsViewModel = new ObservableCollection<HueLight>();
-            var filters = _lightsViewModel.Where(c => c.isOn == false);
-            foreach (HueLight light in filters)
-            {
-                this._filteredLightsViewModel.Add(light);
-            }
-            this.DataContext = this._filteredLightsViewModel;
+            this.DataContext = _lightsViewModel.Where(c => c.isOn == false);
         }
 
         private void undo_Click(object sender, RoutedEventArgs e)

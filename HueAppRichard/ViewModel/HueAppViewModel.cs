@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HueAppRichard.ViewModel
 {
-     class HueAppViewModel
+    class HueAppViewModel
     {
         private static ObservableCollection<HueLight> huelights = new ObservableCollection<HueLight>();
 
@@ -24,7 +24,8 @@ namespace HueAppRichard.ViewModel
                 {
                     Task.Run(() => AddLights()).Wait();
                 }
-                catch(AggregateException e){
+                catch (AggregateException e)
+                {
                     System.Diagnostics.Debug.WriteLine(e.Message);
                 }
             }
@@ -33,13 +34,13 @@ namespace HueAppRichard.ViewModel
 
         public static ObservableCollection<HueLight> getGroups()
         {
-            if(hueGroups.Count == 0)
+            if (hueGroups.Count == 0)
             {
                 try
                 {
                     Task.Run(() => AddGroups()).Wait();
                 }
-                catch(AggregateException e)
+                catch (AggregateException e)
                 {
                     System.Diagnostics.Debug.Write(e.Message);
                 }
