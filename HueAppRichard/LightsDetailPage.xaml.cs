@@ -56,6 +56,7 @@ namespace HueAppRichard
         {
             this.hueLight.hue = Convert.ToInt32(hueSlider.Value);
             this.hueLight.effect = false;
+            hueValue.Text = this.hueLight.hue.ToString();
             await HueAppViewModel.updateLight(hueLight, MainPage.isGroup);
         }
 
@@ -63,6 +64,7 @@ namespace HueAppRichard
         {
             this.hueLight.saturation = Convert.ToInt32(saturationSlider.Value);
             this.hueLight.effect = false;
+            saturationValue.Text = this.hueLight.saturation.ToString();
             await HueAppViewModel.updateLight(hueLight, MainPage.isGroup);
         }
 
@@ -70,6 +72,7 @@ namespace HueAppRichard
         {
             this.hueLight.brightness = Convert.ToInt32(brightnessSlider.Value);
             this.hueLight.effect = false;
+            brightnessValue.Text = this.hueLight.brightness.ToString();
             await HueAppViewModel.updateLight(hueLight, MainPage.isGroup);
         }
 

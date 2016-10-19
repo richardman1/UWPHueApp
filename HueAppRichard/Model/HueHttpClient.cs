@@ -73,7 +73,7 @@ namespace HueAppRichard.Model
                                 );
                         }
                     }
-                    
+
                     lights.Add(l);
                 }
                 catch (Exception e)
@@ -84,7 +84,7 @@ namespace HueAppRichard.Model
             return lights;
         }
 
-        
+
 
         public async Task<string> AllLightsRed()
         {
@@ -161,7 +161,7 @@ namespace HueAppRichard.Model
                 {
                     return string.Empty;
                 }
-                
+
                 string jsonResponse = await response.Content.ReadAsStringAsync();
 
                 System.Diagnostics.Debug.WriteLine(jsonResponse);
