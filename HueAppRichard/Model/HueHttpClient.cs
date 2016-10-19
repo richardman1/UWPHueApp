@@ -13,9 +13,12 @@ namespace HueAppRichard.Model
 {
     public class HueHttpClient
     {
+        string ip, username, tmpIp, tmpUsername;
         public HueHttpClient()
         {
-
+            MainPage.RetrieveSettings(out tmpIp, out tmpUsername);
+            this.ip = tmpIp;
+            this.username = tmpUsername;
         }
 
         private ObservableCollection<HueLight> ParseJson(string jsonResponse, bool isGroup)
@@ -97,10 +100,8 @@ namespace HueAppRichard.Model
                             Windows.Storage.Streams.UnicodeEncoding.Utf8,
                             "application/json");
                 System.Diagnostics.Debug.WriteLine(content);
-                string ip, username;
+
                 //int port;
-                ip = "192.168.1.179";
-                username = "1492b31c3af0d62f84eb4f438b041a7";
                 //port = 8000;
                 //ip = "localhost:8000";
                 //username = "21ae800caaa4f2198e09b35c251be8e";
@@ -141,9 +142,7 @@ namespace HueAppRichard.Model
                             Windows.Storage.Streams.UnicodeEncoding.Utf8,
                             "application/json");
                 System.Diagnostics.Debug.WriteLine(content);
-                string ip, username;
-                ip = "192.168.1.179";
-                username = "1492b31c3af0d62f84eb4f438b041a7";
+
                 //port = 8000;
                 //ip = "localhost:8000";
                 //username = "21ae800caaa4f2198e09b35c251be8e";
@@ -186,11 +185,8 @@ namespace HueAppRichard.Model
             {
                 HttpClient client = new HttpClient();
 
-                string ip, username;
-                //int port;
 
-                ip = "192.168.1.179";
-                username = "1492b31c3af0d62f84eb4f438b041a7";
+                //int port;
                 //port = 8000;
                 //ip = "localhost:8000";
                 //username = "21ae800caaa4f2198e09b35c251be8e";
@@ -226,11 +222,7 @@ namespace HueAppRichard.Model
             {
                 HttpClient client = new HttpClient();
 
-                string ip, username;
                 //int port;
-
-                ip = "192.168.1.179";
-                username = "1492b31c3af0d62f84eb4f438b041a7";
                 //port = 8000;
                 //ip = "localhost:8000";
                 //username = "21ae800caaa4f2198e09b35c251be8e";
