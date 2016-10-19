@@ -9,37 +9,39 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel Orientation="Vertical">
-            <TextBlock Name="lightName" Text="{Binding name}" HorizontalAlignment="Center"></TextBlock>
-            <TextBlock Name="lightType" Text="{Binding type}" HorizontalAlignment="Center"></TextBlock>
-            <TextBlock Name="lightId" Text="{Binding id}" HorizontalAlignment="Center"></TextBlock>
-            
+            <TextBlock Name="lightName" Text="{Binding name}" HorizontalAlignment="Center"/>
+            <TextBlock Name="lightType" Text="{Binding type}" HorizontalAlignment="Center"/>
+            <TextBlock Name="lightId" Text="{Binding id}" HorizontalAlignment="Center"/>
+            <TextBlock Name="colorstring" Text="" HorizontalAlignment="Center"/>
+
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Brightness" HorizontalAlignment="Left"></TextBlock>
                 <TextBlock Name="brightnessValue" Text="{Binding brightness}" Margin="250, 0, 0, 0"></TextBlock>
             </StackPanel>
-            <Slider Name="brightnessSlider" Maximum="254" Value="{Binding brightness}" ValueChanged="brightnessSlider_ValueChanged"></Slider>
+            <Slider Name="brightnessSlider" Maximum="254" Value="{Binding brightness}" ValueChanged="brightnessSlider_ValueChanged" Margin="10"/>
 
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Saturation" HorizontalAlignment="Left"></TextBlock>
-                <TextBlock Name="saturationValue" Text="{Binding saturation}" Margin="250, 0, 0, 0"></TextBlock>
+                <TextBlock Text="Saturation" HorizontalAlignment="Left"/>
+                <TextBlock Name="saturationValue" Text="{Binding saturation}" Margin="250, 0, 0, 0"/>
             </StackPanel>
-            <Slider Name="saturationSlider" Maximum="254" Value="{Binding saturation}" ValueChanged="saturationSlider_ValueChanged"></Slider>
+            <Slider Name="saturationSlider" Maximum="254" Value="{Binding saturation}" ValueChanged="saturationSlider_ValueChanged" Margin="10"/>
 
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Hue" HorizontalAlignment="Left"></TextBlock>
-                <TextBlock Name="hueValue" Text="{Binding hue}" Margin="250, 0, 0, 0"></TextBlock>
+                <TextBlock Text="Hue" HorizontalAlignment="Left"/>
+                <TextBlock Name="hueValue" Text="{Binding hue}" Margin="250, 0, 0, 0"/>
             </StackPanel>
-            <Slider Name="hueSlider" Maximum="65280" Value="{Binding hue}" ValueChanged="hueSlider_ValueChanged"></Slider>
+            <Slider Name="hueSlider" Maximum="65280" Value="{Binding hue}" ValueChanged="hueSlider_ValueChanged" Margin="10"/>
 
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Colorloop" VerticalAlignment="Center" HorizontalAlignment="Left"></TextBlock>
+                <TextBlock Text="Colorloop" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                 <ToggleSwitch Name="colorloop" Margin="50, 0, 0, 0" IsOn="{Binding effect}" Toggled="colorloop_Toggled"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="On/Off" VerticalAlignment="Center" HorizontalAlignment="Left"></TextBlock>
+                <TextBlock Text="On/Off" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                 <ToggleSwitch Name="isOn" Margin="50, 0, 0, 0" IsOn="{Binding isOn}" Toggled="isOn_Toggled"/>
             </StackPanel>
+            <Button Name="backToList" Content="Back" FontSize="20" HorizontalAlignment="Center" Margin="0, 50, 0, 0" Click="backToList_Click"/>
         </StackPanel>
     </Grid>
 </Page>

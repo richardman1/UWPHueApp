@@ -95,6 +95,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ColorUtil.cs" />
+    <Compile Include="Helpers\ExtensionUtil.cs" />
     <Compile Include="LightsDetailPage.xaml.cs">
       <DependentUpon>LightsDetailPage.xaml</DependentUpon>
     </Compile>
@@ -113,6 +115,7 @@
     <None Include="HueAppRichard_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Square150x150Logo.scale-100.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

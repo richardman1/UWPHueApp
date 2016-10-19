@@ -9,21 +9,13 @@
     mc:Ignorable="d">
 
     <Page.BottomAppBar>
-        <CommandBar>
-            <AppBarToggleButton Icon="Shuffle" Label="Shuffle" />
-            <AppBarToggleButton Icon="RepeatAll" Label="Repeat" Click="AllRedButton_Click"/>
+        <CommandBar HorizontalAlignment="Center">
+            <AppBarButton Name="showGroups" Icon="AddFriend" Label="Group/Single Lights" Click="showGroups_Click" />
+            <AppBarButton Name="allRed" Icon="World" Label="All lights Red" Click="AllRedButton_Click"/>
             <AppBarSeparator/>
-            <AppBarButton Icon="Back" Label="Back"/>
-            <AppBarButton Icon="Stop" Label="Stop" />
-            <AppBarButton Icon="Play" Label="Play" />
-            <AppBarButton Icon="Forward" Label="Forward"/>
-            <CommandBar.SecondaryCommands>
-                <AppBarButton Icon="Like" Label="Like"/>
-                <AppBarButton Icon="Dislike" Label="Dislike"/>
-            </CommandBar.SecondaryCommands>
-            <CommandBar.Content>
-                <TextBlock Text="Now playing..." Margin="12,14"/>
-            </CommandBar.Content>
+            <AppBarButton Name="showAllOn" Icon="Accept" Label="Show all on" Click="showAllOn_Click"/>
+            <AppBarButton Name="showAllOff" Icon="Cancel" Label="Show all off" Click="showAllOff_Click"/>
+            <AppBarButton Name="undo" Icon="Undo" Label="Undo filter" Click="undo_Click"/>
         </CommandBar>
     </Page.BottomAppBar>
 

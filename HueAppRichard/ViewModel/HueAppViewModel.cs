@@ -12,6 +12,8 @@ namespace HueAppRichard.ViewModel
     {
         private static ObservableCollection<HueLight> huelights = new ObservableCollection<HueLight>();
 
+        private static ObservableCollection<HueLight> hueGroups = new ObservableCollection<HueLight>();
+
         private static HueHttpClient httpClient = new HueHttpClient();
 
         public static ObservableCollection<HueLight> getLights()
@@ -29,6 +31,22 @@ namespace HueAppRichard.ViewModel
             return huelights;
         }
 
+        public static ObservableCollection<HueLight> getGroups()
+        {
+            if(hueGroups.Count == 0)
+            {
+                try
+                {
+                    Task.Run(() => AddGroups()).Wait();
+                }
+                catch(AggregateException e)
+                {
+                    System.Diagnostics.Debug.Write(e.Message);
+                }
+            }
+            return hueGroups;
+        }
+
         public static async Task AddLights()
         {
             ObservableCollection<HueLight> lights = await httpClient.retrieveLights();
@@ -38,9 +56,18 @@ namespace HueAppRichard.ViewModel
             }
         }
 
-        public static async Task updateLight(HueLight hueLight)
+        public static async Task AddGroups()
         {
-            await httpClient.updateLight(hueLight);
+            ObservableCollection<HueLight> groups = await httpClient.retrieveGroups();
+            foreach (HueLight l in groups)
+            {
+                hueGroups.Add(l);
+            }
+        }
+
+        public static async Task updateLight(HueLight hueLight, bool isGroup)
+        {
+            await httpClient.updateLight(hueLight, isGroup);
         }
     }
 }
