@@ -9,13 +9,16 @@
     mc:Ignorable="d">
 
     <Page.BottomAppBar>
-        <CommandBar>
+
+        <CommandBar HorizontalAlignment="Center">
+            <AppBarButton Name="showGroups" Icon="AddFriend" Label="Group/Single Lights" Click="showGroups_Click" />
             <AppBarToggleButton Icon="Setting" Label="Settings" Click="SettingsButton_Click"/>
             <AppBarToggleButton Icon="SetTile" Label="Repeat" Click="AllRedButton_Click"/>
             <AppBarSeparator/>
-            <CommandBar.Content>
-                <TextBlock Text="Now playing..." Margin="12,14"/>
-            </CommandBar.Content>
+            <AppBarButton Name="showAllOn" Icon="Accept" Label="Show all on" Click="showAllOn_Click"/>
+            <AppBarButton Name="showAllOff" Icon="Cancel" Label="Show all off" Click="showAllOff_Click"/>
+            <AppBarButton Name="undo" Icon="Undo" Label="Undo filter" Click="undo_Click"/>
+
         </CommandBar>
     </Page.BottomAppBar>
 

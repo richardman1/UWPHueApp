@@ -16,9 +16,9 @@ namespace HueAppRichard.Model
         public int brightness { get; set; }
         public int hue { get; set; }
         public string type { get; set; }
-        public string effect { get; set; }
+        public bool effect { get; set; }
 
-        public HueLight(string id, string name, bool isOn, int saturation, int brightness, int hue, string type, string effect)
+        public HueLight(string id, string name, bool isOn, int saturation, int brightness, int hue, string type, bool effect)
         {
             this.id = id;
             this.name = name;
