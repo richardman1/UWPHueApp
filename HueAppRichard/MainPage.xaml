@@ -13,7 +13,7 @@
         <CommandBar HorizontalAlignment="Center">
             <AppBarButton Name="showGroups" Icon="AddFriend" Label="Group/Single Lights" Click="showGroups_Click" />
             <AppBarToggleButton Icon="Setting" Label="Settings" Click="SettingsButton_Click"/>
-            <AppBarToggleButton Icon="SetTile" Label="Repeat" Click="AllRedButton_Click"/>
+            <AppBarToggleButton Icon="World" Label="All Red" Click="AllRedButton_Click"/>
             <AppBarSeparator/>
             <AppBarButton Name="showAllOn" Icon="Accept" Label="Show all on" Click="showAllOn_Click"/>
             <AppBarButton Name="showAllOff" Icon="Cancel" Label="Show all off" Click="showAllOff_Click"/>
@@ -28,8 +28,10 @@
             <ListView.ItemTemplate>
                 <DataTemplate x:Name="dataTemplate" >
                     <StackPanel Orientation="Horizontal">
+                        <Rectangle Name="lightColor" Width="100" Height="100" Fill="{Binding rgbcolor}"/>
                         <StackPanel Orientation="Vertical" Width="300" Margin="0,0,0,20" >
                             <TextBlock Text="{Binding name}" FontSize="24" />
+                            <TextBlock Text="{Binding type}" FontSize="18"/>
                         </StackPanel>
                     </StackPanel>
                 </DataTemplate>

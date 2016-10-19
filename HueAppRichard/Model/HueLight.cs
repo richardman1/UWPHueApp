@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HueAppRichard.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -12,11 +13,12 @@ namespace HueAppRichard.Model
         public string name { get; set; }
         public string id { get; set; }
         public bool isOn { get; set; }
-        public int saturation { get; set; }
-        public int brightness { get; set; }
-        public int hue { get; set; }
+        public double saturation { get; set; }
+        public double brightness { get; set; }
+        public double hue { get; set; }
         public string type { get; set; }
         public bool effect { get; set; }
+        public string rgbcolor { get; set; }
 
         public HueLight(string id, string name, bool isOn, int saturation, int brightness, int hue, string type, bool effect)
         {
@@ -28,6 +30,12 @@ namespace HueAppRichard.Model
             this.hue = hue;
             this.type = type;
             this.effect = effect;
+            convertHue();
+        }
+
+        private void convertHue()
+        {
+            this.rgbcolor = ColorUtil.HsvToRgb(hue, saturation, brightness).ToString();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
