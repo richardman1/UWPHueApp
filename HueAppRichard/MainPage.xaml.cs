@@ -21,6 +21,8 @@ using System.Runtime.Serialization.Json;
 using Windows.Data.Json;
 using HueAppRichard.ViewModel;
 using System.Collections.ObjectModel;
+using Windows.Storage;
+using HueAppRichard.View;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -31,6 +33,10 @@ namespace HueAppRichard
     /// </summary>
     public sealed partial class MainPage : Page
     {
+
+        public static ApplicationData APP_DATA = ApplicationData.Current;
+        public static ApplicationDataContainer LOCAL_SETTINGS = APP_DATA.LocalSettings;
+
         private HueHttpClient httpClient;
 
         private ObservableCollection<HueLight> _lightsViewModel = HueAppViewModel.getLights();
@@ -58,6 +64,30 @@ namespace HueAppRichard
         private void hueListView_ItemClick(object sender, ItemClickEventArgs e)
         {
             Frame.Navigate(typeof(LightsDetailPage), e.ClickedItem);
+        }
+
+        public static void SetSettings(string ip, int port, string username) {
+            MainPage.LOCAL_SETTINGS.Values["ip"] = ip;
+            MainPage.LOCAL_SETTINGS.Values["username"] = username;
+        }
+
+        public static void RetrieveSettings(out string ip, out string username) {
+            string tmpIp = MainPage.LOCAL_SETTINGS.Values["ip"] as string;
+            string tmpUsername = MainPage.LOCAL_SETTINGS.Values["username"] as string;
+
+            if (string.IsNullOrEmpty(tmpIp)) {
+                tmpIp = "192.168.1.179";
+            }
+            if (string.IsNullOrEmpty(tmpUsername)) {
+                tmpUsername = "1492b31c3af0d62f84eb4f438b041a7";
+            }
+
+            ip = tmpIp;
+            username = tmpUsername;
+        }
+
+        private void SettingsButton_Click(object sender, RoutedEventArgs e) {
+            Frame.Navigate(typeof(Settings));
         }
     }
 }

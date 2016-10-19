@@ -1,0 +1,28 @@
+﻿<Page
+    x:Class="HueAppRichard.View.Settings"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:HueAppRichard.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" RequestedTheme="Dark">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" RequestedTheme="Dark">
+        <StackPanel Orientation="Vertical">
+            <TextBlock Name="lightName" Text="Settings" HorizontalAlignment="Center" FontSize="50pt"></TextBlock>
+
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Ip Address" HorizontalAlignment="Left" Padding="10"></TextBlock>
+                <TextBox Text="{Binding ip}" Name="ip"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Username" HorizontalAlignment="Left" Padding="10"></TextBlock>
+                <TextBox Text="{Binding username}" Name="username"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Cancel" HorizontalAlignment="Left" Click="CancelButton_Click" RequestedTheme="Dark"/>
+                <Button Content="Save" HorizontalAlignment="Right" Click="SaveButton_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
